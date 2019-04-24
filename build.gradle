@@ -19,11 +19,22 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	jmhVersion = '1.21'
+}
+
 dependencies {
+	/* Spring Boot */
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	/* Lombok */
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	/* JMH */
+	implementation group: 'org.openjdk.jmh', name: 'jmh-core', version: "${jmhVersion}"
+	implementation group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: "${jmhVersion}"
 }
